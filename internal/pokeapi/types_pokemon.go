@@ -13,16 +13,28 @@ type RespShallowPokemonList struct {
 }
 
 type Pokemon struct {
-	Height  int    `json:"height"`
-	Weight  int    `json:"weight"`
-	BaseExp int    `json:"base_experience"`
-	Name    string `json:"name"`
-	Stats   []struct {
-		Stat struct {
-			base int `json:"base_stat"`
-			Stat struct {
-				Name string `json:"name"`
-			} `json:"stat"`
-		} `json:"height"`
-	} `json:"stats"`
+	Height  int           `json:"height"`
+	Weight  int           `json:"weight"`
+	BaseExp int           `json:"base_experience"`
+	Name    string        `json:"name"`
+	Stats   []PokemonStat `json:"stats"`
+	Types   []PokemonType `json:"types"`
+}
+
+type PokemonStat struct {
+	BaseStat int      `json:"base_stat"`
+	Effort   int      `json:"effort"`
+	Stat     StatInfo `json:"stat"`
+}
+
+type StatInfo struct {
+	Name string `json:"name"`
+}
+
+type PokemonType struct {
+	Type TypeInfo `json:"type"`
+}
+
+type TypeInfo struct {
+	Name string `json:"name"`
 }
